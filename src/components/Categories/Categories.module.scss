@@ -1,0 +1,25 @@
+.Categories {
+  color: var(--light-yellow);
+  background: var(--brown);
+}
+.CategoriesUl {
+  display: flex;
+  flex-wrap: wrap;
+  height: 50px;
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.LinkWrapper {
+  font-size: 18px;
+  line-height: 50px;
+  height: 50px;
+  padding: 0 10px;
+  cursor: pointer;
+  white-space: nowrap;
+  height: 50px;
+}
+.Link {
+  text-decoration: none;
+}

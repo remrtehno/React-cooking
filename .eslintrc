@@ -1,0 +1,46 @@
+{
+    "extends": [
+        "airbnb-typescript"
+    ],
+    "rules": {
+        "react/jsx-indent": ["warn", 2],
+        "react/jsx-indent-props": ["warn", 2],
+        "react/jsx-filename-extension": 0,
+        "react/prop-types": 0,
+        "@typescript-eslint/no-dupe-class-members": 0,
+        "@typescript-eslint/indent": ["warn", 2],
+        // TODO [Kuryakov] 5/12/21 3:34 PM Need Enable all rules
+        "jsx-a11y/media-has-caption": "off",
+        "@typescript-eslint/no-unused-vars": "warn",
+        "no-trailing-spaces":"warn",
+        "@typescript-eslint/quotes": "off",
+        "react/destructuring-assignment": "off",
+        "@typescript-eslint/semi": "off",
+        "padded-blocks": "warn",
+        "arrow-body-style": "warn",
+        /// end
+        "react/jsx-tag-spacing": "warn",
+        "@typescript-eslint/object-curly-spacing": "warn",
+        "linebreak-style": 0,
+        "no-unused-vars": "off",
+        "unused-imports/no-unused-imports": "warn",
+        "unused-imports/no-unused-vars": [
+            "warn",
+            { "vars": "all", "varsIgnorePattern": "^_", "args": "after-used", "argsIgnorePattern": "^_" }
+        ]
+    },
+    "plugins": [
+        "jest",
+        "babel",
+        "unused-imports",
+        "@typescript-eslint"
+    ],
+    "env": {
+        "browser": true,
+        "jest/globals": true
+    },
+    "parserOptions": {
+        "project": "./tsconfig.json"
+    },
+    "parser": "@typescript-eslint/parser"
+}
