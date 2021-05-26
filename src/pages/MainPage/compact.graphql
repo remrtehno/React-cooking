@@ -1,0 +1,27 @@
+query compact {
+    compact {
+        flowURL
+        name
+        id
+        categories {
+            alias
+            id
+            name
+            contents {
+                contents {
+                    previews {
+                        id
+                        link
+                        type
+                    }
+                    description
+                    id
+                    name
+                    previews {
+                        link
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,215 @@
+.Tile {
+  @media (max-width: 992px) {
+    margin-bottom: 25px;
+  }
+  a {
+    text-decoration: none;
+  }
+}
+
+.Item {
+  grid-column: span 1;
+  grid-row: span 1;
+  height: 190px;
+  position: relative;
+  background-color: #fff;
+  box-shadow: 0 0 30px 0 rgb(0 0 0 / 20%);
+  @media (max-width: 992px) {
+    height: 40vw;
+  }
+
+
+  &::before {
+    display: block;
+    content: "";
+    width: 100%;
+    height: 30px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 0;
+    background-color: var(--yellow);
+  }
+}
+
+.ContentPreview {
+  height: 100%;
+  position: relative;
+  display: flex;
+}
+
+.ContentItemPreviewImageWrap {
+  padding: 10px;
+  width: 45%;
+  height: 100%;
+  flex: 1 0 45%;
+  display: flex;
+  position: relative;
+
+}
+
+.ContentItemPreviewImage {
+  background-size: cover;
+  //background-color: rgb(219, 219, 219);
+  background-position: 50% 50%, 50% 50%;
+  background-repeat: no-repeat;
+  flex: auto;
+  position: relative;
+  overflow: hidden;
+
+
+}
+
+.ContentItemPreviewImageLazy {
+  padding: var(--padding-gutter);
+  background-image: linear-gradient(90deg, #ddd 0px, #e8e8e8 40px, #ddd 80px);
+  background-size: 600px;
+  animation: shine-avatar 1.6s infinite linear;
+  position: absolute;
+  left: 10px;
+  top: 10px;
+  bottom: 10px;
+  right: 10px;
+}
+
+
+@keyframes shine-avatar {
+  0% {
+    background-position: -32px;
+  }
+  40%, 100% {
+    background-position: 208px;
+  }
+}
+.ContentItemPreviewImageLoader {
+  background-color: rgb(219, 219, 219);
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
+}
+
+.ContentDescriptionName {
+  display: inline-block;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  padding-right: 5px;
+  font-size: 14px;
+  height: 30px;
+  line-height: 30px;
+  font-family: Arial, Helvetica, sans-serif;
+  text-transform: uppercase;
+  color: #4c4c4e;
+  max-width: 100%;
+  min-width: 97%;
+  position: relative;
+
+  &::after {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    z-index: 1;
+    display: block;
+    content: "";
+    width: 40px;
+    height: 30px;
+    background: linear-gradient(90deg, rgba(255, 205, 0, 0), #ffcd00);
+  }
+}
+
+.ContentDescriptionNameHide {
+  width: 0;
+  min-width: 100%;
+}
+
+.ContentDescription {
+  flex: 0 1 65%;
+  max-width: 100%;
+}
+
+.ContentDescriptionType {
+  height: 30px;
+  line-height: 30px;
+  color: var(--gray);
+  display: inline-block;
+  &:empty {
+    display: none;
+  }
+}
+
+.ContentDescriptionDescription {
+  display: inline-block;
+  background-color: #fff;
+  font-size: 14px;
+  line-height: 24px;
+  position: relative;
+  margin-bottom: 15px;
+  overflow: hidden;
+  margin-right: 20px;
+  max-height: 150px;
+}
+
+
+.Big {
+  height: 30vw;
+  @media (max-width: 992px) {
+    height: auto;
+  }
+  .ContentItemPreviewImageWrap {
+    width: 100%;
+    padding: 0;
+  }
+
+  .ContentItemPreviewImage {
+
+    @media (max-width: 992px) {
+      height: calc(50vw - 10px);
+      //height: auto;
+    }
+  }
+
+  .ContentDescriptionNameHide {
+    background: var(--yellow);
+    padding-left: 20px;
+  }
+  .ContentItemPreviewImageLazy {
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+  }
+  .ContentDescription {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    z-index: 1;
+
+    width: calc(100% - 40px);
+    display: flex;
+    flex-direction: column;
+    @media (max-width: 992px) {
+      position: static;
+      width: 100%;
+    }
+  }
+  .ContentPreview {
+    display: block;
+  }
+  .ContentDescriptionDescription {
+    font-size: 18px;
+    line-height: 20px;
+    padding: 20px;
+    margin: 0;
+  }
+}
+
+.PlayIcon {
+  max-width: 50px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}

@@ -1,0 +1,107 @@
+# This file was generated based on ".graphqlconfig". Do not edit manually.
+
+schema {
+    query: Query
+}
+
+type Category {
+    alias: String!
+    contents(first: Int, offset: Int): ContentEdge
+    id: ID!
+    localizations(lang: [String!]!): [I18nCategory!]
+    name: String!
+    priority: Int!
+    type: String!
+}
+
+type Content {
+    description: String
+    id: ID!
+    link: String!
+    localizations(lang: [String!]!): [I18nContent!]
+    metaContentParams: [MetaContentParam!]
+    name: String!
+    previews: [Preview!]
+    priority: Int!
+    protected: Boolean!
+    tags: [Tag!]
+    type: String!
+}
+
+type ContentEdge {
+    contents: [Content!]
+    count: Int!
+    hasNextPage: Boolean!
+}
+
+type I18nCategory {
+    id: ID!
+    lang: String!
+    name: String!
+}
+
+type I18nContent {
+    description: String
+    id: ID!
+    lang: String!
+    link: String!
+    name: String!
+}
+
+type I18nMetaContentParam {
+    id: ID!
+    lang: String!
+    value: String!
+}
+
+type I18nTag {
+    displayName: String!
+    id: ID!
+    lang: String!
+}
+
+type MetaContentParam {
+    id: ID!
+    localizations(lang: [String!]!): [I18nMetaContentParam!]
+    paramName: String!
+    value: String!
+}
+
+type Preview {
+    id: ID!
+    link: String!
+    priority: Int!
+    type: String!
+}
+
+type Query {
+    category(id: ID!): Category
+    compact: Service
+    content(id: ID!): Content
+    searchContentByName(first: Int, name: String!, offset: Int): ContentEdge
+    searchContentByTag(first: Int, offset: Int, tagName: String!): ContentEdge
+    tag(id: ID!): Tag
+}
+
+type Service {
+    alias: String!
+    categories: [Category!]
+    flowURL: String
+    id: ID!
+    name: String!
+    sskey: String!
+}
+
+type Tag {
+    contents(first: Int, offset: Int): ContentEdge
+    displayName: String!
+    id: ID!
+    localizations(lang: [String!]!): [I18nTag!]
+    name: String!
+    priority: Int!
+}
+
+
+scalar JSON
+
+scalar UUID
