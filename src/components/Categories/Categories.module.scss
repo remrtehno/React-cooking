@@ -1,6 +1,9 @@
 .Categories {
   color: var(--light-yellow);
   background: var(--brown);
+  @media (max-width: 992px) {
+    display: none;
+  }
 }
 .CategoriesUl {
   display: flex;
@@ -19,6 +22,11 @@
   cursor: pointer;
   white-space: nowrap;
   height: 50px;
+  display: flex;
+}
+.LinkWrapperActive {
+  background-color: var(--light-yellow);
+  color: var(--brown);
 }
 .Link {
   text-decoration: none;

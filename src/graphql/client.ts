@@ -2,7 +2,7 @@ import {
   ApolloClient, ApolloLink, InMemoryCache, HttpLink,
 } from 'apollo-boost';
 
-const httpUrl = 'http://localhost:3000/api/query';
+const httpUrl = '/cook/api/query';
 
 const httpLink = ApolloLink.from([
   new ApolloLink((operation, forward) => {

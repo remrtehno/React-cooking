@@ -6,44 +6,44 @@ const addSourceInfo = (proxyReq) => {
 };
 
 module.exports = function (app) {
-  app.use(createProxyMiddleware('/api', {
+  app.use(createProxyMiddleware('/cook/api', {
     target: 'http://vps8067.mtu.immo:6427',
     secure: false,
     logLevel: 'debug',
     changeOrigin: true,
     onProxyReq: addSourceInfo,
     pathRewrite: {
-      '^/api': '',
+      '^/cook/api': '',
     },
   }));
-  app.use(createProxyMiddleware('/gate', {
+  app.use(createProxyMiddleware('/cook/gate', {
     target: 'http://vps8067.mtu.immo:4151',
     secure: false,
     logLevel: 'debug',
     changeOrigin: true,
     onProxyReq: addSourceInfo,
     pathRewrite: {
-      '^/gate': '',
+      '^/cook/gate': '',
     },
   }));
-  app.use(createProxyMiddleware('/auth', {
+  app.use(createProxyMiddleware('/cook/auth', {
     target: 'http://vps8067.mtu.immo:6798',
     secure: false,
     logLevel: 'debug',
     changeOrigin: true,
     onProxyReq: addSourceInfo,
     pathRewrite: {
-      '^/auth': '',
+      '^/cook/auth': '',
     },
   }));
-  app.use(createProxyMiddleware('/text', {
+  app.use(createProxyMiddleware('/cook/text', {
     target: 'http://9003.vps2085.mtu.immo',
     secure: false,
     logLevel: 'debug',
     changeOrigin: true,
     onProxyReq: addSourceInfo,
     pathRewrite: {
-      '^/text': '',
+      '^/cook/text': '',
     },
   }));
 };

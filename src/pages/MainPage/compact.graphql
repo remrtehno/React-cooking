@@ -9,6 +9,11 @@ query compact {
             name
             contents {
                 contents {
+                    previews {
+                        id
+                        link
+                        type
+                    }
                     description
                     id
                     name

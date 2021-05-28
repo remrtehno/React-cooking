@@ -4,6 +4,7 @@ import Page from '../../components/Page/Page';
 import Categories from '../../components/Categories/Categories';
 import CategoryItems from '../../components/CategoryItems/CategoryItems';
 import Loader from "../../components/Loader/Loader";
+import { MAIN_CATEGORY } from "../../constants/constants";
 
 function MainPage() {
   const { data, loading } = useCompactQuery();
@@ -16,8 +17,8 @@ function MainPage() {
 
   return (
     <Page>
-      <Categories categories={categories} />
-      <CategoryItems content={categories?.find((item) => item.alias === 'salati')} />
+      <Categories categories={categories} alias={MAIN_CATEGORY} />
+      <CategoryItems content={categories?.find((item) => item.alias === MAIN_CATEGORY)} />
     </Page>
   );
 }

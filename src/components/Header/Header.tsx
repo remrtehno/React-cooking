@@ -8,6 +8,7 @@ import API from '../../constants/constants';
 const Header = () => {
   const history = useHistory();
   const redirectToRoot = () => history && history.push(API.HOST);
+
   return (
     <header className={s.Header}>
       <div className={cx('container', s.HeaderContainer)}>

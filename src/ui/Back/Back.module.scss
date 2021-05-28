@@ -17,6 +17,11 @@
 .BackSvg {
   height: 80px;
   width: 50px;
+  @media (max-width: 992px) {
+    width: 30px;
+    height: 30px;
+    margin-top: 5px;
+  }
 }
 
 

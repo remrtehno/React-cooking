@@ -24,7 +24,7 @@ const CategoryPage:FC<CategoryProps.Props> = (props) => {
 
   return (
     <Page>
-      <Categories categories={categories} />
+      <Categories categories={categories} alias={alias} />
       <CategoryItems content={categories?.find((item) => item.alias === alias)} />
     </Page>
   );

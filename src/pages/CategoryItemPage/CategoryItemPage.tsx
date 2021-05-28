@@ -10,6 +10,8 @@ import s from './CategoryItemPage.module.scss';
 import Tile from "../../components/Tile/Tile";
 import { getImage, getLink } from "../../helpers/getLinks";
 import Back from "../../ui/Back/Back";
+import randomFromArray from "../../helpers/randomFromArray";
+import Categories from "../../components/Categories/Categories";
 
 declare namespace CategoryItemPageProps {
   export type Props = {
@@ -36,7 +38,7 @@ const CategoryItemPage:FC<CategoryItemPageProps.Props> = (props) => {
 
   return (
     <Page>
-
+      <Categories categories={compact.data?.compact?.categories} alias={alias} />
       <div className={cx(s.CategoryItemPage)}>
         <div className={s.CategoryItemVideo}>
           <Back />
@@ -46,7 +48,7 @@ const CategoryItemPage:FC<CategoryItemPageProps.Props> = (props) => {
         <div className={s.CategoryItemSidebar}>
           <div className={s.CategoryItemSidebarScrolled}>
             <div className={s.CategoryItemSidebarWrapper}>
-              {currentCategoryContents?.slice(0, 30).map((item, index) => (
+              { randomFromArray(currentCategoryContents, 5).map((item, index) => (
                 <Tile
                   isBig={!index}
                   key={item.id}

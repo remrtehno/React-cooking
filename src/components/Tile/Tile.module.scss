@@ -1,5 +1,10 @@
 .Tile {
-
+  @media (max-width: 992px) {
+    margin-bottom: 25px;
+  }
+  a {
+    text-decoration: none;
+  }
 }
 
 .Item {
@@ -9,6 +14,9 @@
   position: relative;
   background-color: #fff;
   box-shadow: 0 0 30px 0 rgb(0 0 0 / 20%);
+  @media (max-width: 992px) {
+    height: 40vw;
+  }
 
 
   &::before {
@@ -38,6 +46,7 @@
   flex: 1 0 45%;
   display: flex;
   position: relative;
+
 }
 
 .ContentItemPreviewImage {
@@ -48,6 +57,8 @@
   flex: auto;
   position: relative;
   overflow: hidden;
+
+
 }
 
 .ContentItemPreviewImageLazy {
@@ -124,6 +135,9 @@
   line-height: 30px;
   color: var(--gray);
   display: inline-block;
+  &:empty {
+    display: none;
+  }
 }
 
 .ContentDescriptionDescription {
@@ -141,9 +155,25 @@
 
 .Big {
   height: 30vw;
+  @media (max-width: 992px) {
+    height: auto;
+  }
   .ContentItemPreviewImageWrap {
     width: 100%;
     padding: 0;
+  }
+
+  .ContentItemPreviewImage {
+
+    @media (max-width: 992px) {
+      height: calc(50vw - 10px);
+      //height: auto;
+    }
+  }
+
+  .ContentDescriptionNameHide {
+    background: var(--yellow);
+    padding-left: 20px;
   }
   .ContentItemPreviewImageLazy {
     left: 0;
@@ -156,9 +186,30 @@
     bottom: 20px;
     left: 20px;
     z-index: 1;
+
     width: calc(100% - 40px);
+    display: flex;
+    flex-direction: column;
+    @media (max-width: 992px) {
+      position: static;
+      width: 100%;
+    }
   }
   .ContentPreview {
     display: block;
   }
+  .ContentDescriptionDescription {
+    font-size: 18px;
+    line-height: 20px;
+    padding: 20px;
+    margin: 0;
+  }
+}
+
+.PlayIcon {
+  max-width: 50px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }

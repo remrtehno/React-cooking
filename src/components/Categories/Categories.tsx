@@ -10,13 +10,15 @@ import API, { CATEGORY } from '../../constants/constants';
 
 declare namespace CategoriesProps {
     type Props = {
-      categories?: Maybe<Array<{ __typename?: 'Category' } & Pick<Category, 'alias' | 'id' | 'name'>>>
+      categories?: Maybe<Array<{ __typename?: 'Category' } & Pick<Category, 'alias' | 'id' | 'name'>>>,
+      alias?: string,
     };
 }
 
 const Categories:FC<CategoriesProps.Props> = (props) => {
   const history = useHistory();
   const pathAlias = queryString.parse(history?.location?.search).status;
+
   return (
     <div className={s.Categories}>
       <div className="container">
@@ -24,7 +26,7 @@ const Categories:FC<CategoriesProps.Props> = (props) => {
           { props.categories && props.categories.map((val) => {
             const categoryAlias = `${API.HOST}/${CATEGORY}/${val?.alias}`;
             return (
-              <li key={val.id} className={cx(s.LinkWrapper, pathAlias)}>
+              <li key={val.id} className={cx(s.LinkWrapper, pathAlias, props.alias === val?.alias ? s.LinkWrapperActive : '')}>
                 <Link className={s.Link} to={categoryAlias}>{val?.name}</Link>
               </li>
             )

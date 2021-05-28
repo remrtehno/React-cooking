@@ -223,7 +223,7 @@ export type CompactQuery = (
           & Pick<Content, 'description' | 'id' | 'name'>
           & { previews?: Maybe<Array<(
             { __typename?: 'Preview' }
-            & Pick<Preview, 'link'>
+            & Pick<Preview, 'id' | 'link' | 'type'>
           )>> }
         )>> }
       )> }
@@ -285,6 +285,11 @@ export const CompactDocument = gql`
       name
       contents {
         contents {
+          previews {
+            id
+            link
+            type
+          }
           description
           id
           name
