@@ -2,42 +2,58 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6efbe6b0-30c2-42e0-bfd1-5925777e1004" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/schema.graphql" beforeDir="false" afterPath="$PROJECT_DIR$/schema.graphql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/css/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/css/index.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Categories/Categories.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Categories/Categories.module.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Categories/Categories.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Categories/Categories.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/CategoryItems/CategoryItems.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/CategoryItems/CategoryItems.module.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/CategoryItems/CategoryItems.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/CategoryItems/CategoryItems.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Footer/Footer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Footer/Footer.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Header/Header.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Header/Header.module.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Header/Header.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Header/Header.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/InnerPage/InnerPage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/InnerPage/InnerPage.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Loader/Loader.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Loader/Loader.module.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Page/Page.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Page/Page.module.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Page/Page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Page/Page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Root/Root.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Root/Root.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Tile/Tile.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Tile/Tile.module.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/VideoPlayer/VideoPlayer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/VideoPlayer/VideoPlayer.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/constants/constants.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/constants/constants.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/generated/graphql.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/generated/graphql.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/helpers/getLinks.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/helpers/getLinks.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/helpers/isMobile.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/helpers/isMobile.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/helpers/randomFromArray.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/helpers/randomFromArray.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/hooks/useOferta.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/hooks/useOferta.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/hooks/useSubscriptioncosts.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/hooks/useSubscriptioncosts.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/hooks/useWelcome.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/hooks/useWelcome.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/CategoryItemPage/CategoryItemPage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/CategoryItemPage/CategoryItemPage.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/CategoryItemPage/CategoryItems.graphql" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/CategoryItemPage/CategoryItems.graphql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/CategoryPage/CategoryPage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/CategoryPage/CategoryPage.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Error/Error.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Error/Error.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/MainPage/MainPage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/MainPage/MainPage.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/MainPage/compact.graphql" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/MainPage/compact.graphql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Page404/Page404.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Page404/Page404.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/types/types.2ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/tsconfig.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/asset-manifest.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/favicon.ico" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/logo192.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/logo512.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/manifest.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/robots.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/static/css/0.b0782bc8.chunk.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/static/css/0.b0782bc8.chunk.css.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/static/css/4.c5e05cb8.chunk.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/static/css/4.c5e05cb8.chunk.css.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/static/css/5.bd002485.chunk.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/static/css/5.bd002485.chunk.css.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/static/css/6.56ff176f.chunk.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/static/css/6.56ff176f.chunk.css.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/static/css/7.4a90d175.chunk.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/static/css/7.4a90d175.chunk.css.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/static/css/8.2ed9e146.chunk.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/static/css/8.2ed9e146.chunk.css.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/static/css/9.2ed9e146.chunk.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/static/css/9.2ed9e146.chunk.css.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/static/css/main.1661a0c7.chunk.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/static/css/main.1661a0c7.chunk.css.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/static/js/0.3333d88e.chunk.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/static/js/0.3333d88e.chunk.js.LICENSE.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/static/js/0.3333d88e.chunk.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/static/js/3.c61044be.chunk.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/static/js/3.c61044be.chunk.js.LICENSE.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/static/js/3.c61044be.chunk.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/static/js/4.84e17cb2.chunk.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/static/js/4.84e17cb2.chunk.js.LICENSE.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/static/js/4.84e17cb2.chunk.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/static/js/5.c5c79167.chunk.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/static/js/5.c5c79167.chunk.js.LICENSE.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/static/js/5.c5c79167.chunk.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/static/js/6.2a2af05f.chunk.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/static/js/6.2a2af05f.chunk.js.LICENSE.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/static/js/6.2a2af05f.chunk.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/static/js/7.efb0387e.chunk.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/static/js/7.efb0387e.chunk.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/static/js/8.70ba863f.chunk.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/static/js/8.70ba863f.chunk.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/static/js/9.f79651ae.chunk.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/static/js/9.f79651ae.chunk.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/static/js/main.b69cab91.chunk.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/static/js/main.b69cab91.chunk.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/static/js/runtime-main.722d6fda.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/static/js/runtime-main.722d6fda.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/static/media/back.67c4c068.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/static/media/play-button.cbec6443.svg" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -144,7 +160,7 @@
       <workItem from="1622621170746" duration="2552000" />
       <workItem from="1622631545296" duration="7077000" />
       <workItem from="1622699536005" duration="6698000" />
-      <workItem from="1622787044749" duration="8301000" />
+      <workItem from="1622787044749" duration="9380000" />
     </task>
     <servers />
   </component>
@@ -162,7 +178,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="origin/master" />
+                        <option value="origin/dev" />
                       </list>
                     </value>
                   </entry>
