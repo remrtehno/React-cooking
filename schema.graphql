@@ -2,11 +2,12 @@
 
 schema {
     query: Query
+    mutation: Mutation
 }
 
 type Category {
     alias: String!
-    contents(first: Int, offset: Int): ContentEdge
+    contents(first: Int, offset: Int, paramFilter: [ParamFilter!]): ContentEdge
     id: ID!
     localizations(lang: [String!]!): [I18nCategory!]
     name: String!
@@ -67,6 +68,10 @@ type MetaContentParam {
     value: String!
 }
 
+type Mutation {
+    deactivateSubs: Boolean
+}
+
 type Preview {
     id: ID!
     link: String!
@@ -78,9 +83,10 @@ type Query {
     category(id: ID!): Category
     compact: Service
     content(id: ID!): Content
-    searchContentByName(first: Int, name: String!, offset: Int): ContentEdge
+    searchContentByName(first: Int, name: String!, offset: Int, searchInNameOnly: Boolean! = false): ContentEdge
     searchContentByTag(first: Int, offset: Int, tagName: String!): ContentEdge
     tag(id: ID!): Tag
+    verify: Boolean
 }
 
 type Service {
@@ -90,15 +96,21 @@ type Service {
     id: ID!
     name: String!
     sskey: String!
+    tags: [Tag!]
 }
 
 type Tag {
-    contents(first: Int, offset: Int): ContentEdge
+    contents(first: Int, offset: Int, paramFilter: [ParamFilter!]): ContentEdge
     displayName: String!
     id: ID!
     localizations(lang: [String!]!): [I18nTag!]
     name: String!
     priority: Int!
+}
+
+input ParamFilter {
+    paramName: String!
+    value: String!
 }
 
 

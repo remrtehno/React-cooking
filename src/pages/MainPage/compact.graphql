@@ -1,4 +1,4 @@
-query compact {
+query compact($lang: [String!]!) {
     compact {
         flowURL
         name
@@ -7,8 +7,17 @@ query compact {
             alias
             id
             name
+            localizations(lang: $lang) {
+                name
+            }
             contents {
                 contents {
+                    localizations(lang: $lang) {
+                        name
+                        id
+                        link
+                        description
+                    }
                     previews {
                         id
                         link

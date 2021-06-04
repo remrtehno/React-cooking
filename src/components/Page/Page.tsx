@@ -10,8 +10,8 @@ declare namespace PageProps {
   }
 }
 
-const Page:FC<PageProps.Props> = ({ children, className}) => (
-  <div className={cx(s.Page, className)}>
+const Page:FC<PageProps.Props> = ({ children, className }) => (
+  <div className={cx(s.Page)}>
     <Header />
     {children}
     <Footer />

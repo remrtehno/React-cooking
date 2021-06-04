@@ -1,33 +1,49 @@
-import React, { FC } from 'react';
+import React, { FC, useEffect, useState } from 'react';
 import {
-  Link, useHistory,
+  Link, useHistory, useLocation,
 } from 'react-router-dom';
-import queryString from "query-string";
 import cx from 'classnames';
-import { Category, Maybe } from '../../generated/graphql';
 import s from './Categories.module.scss';
-import API, { CATEGORY } from '../../constants/constants';
+import API, { CATEGORY, MAIN_CATEGORY } from '../../constants/constants';
 
 declare namespace CategoriesProps {
     type Props = {
-      categories?: Maybe<Array<{ __typename?: 'Category' } & Pick<Category, 'alias' | 'id' | 'name'>>>,
+      categories?: any,
       alias?: string,
     };
 }
 
 const Categories:FC<CategoriesProps.Props> = (props) => {
+  const [, setState] = useState(0);
   const history = useHistory();
-  const pathAlias = queryString.parse(history?.location?.search).status;
+  const location = useLocation();
+
+  useEffect(() => {
+    setState(1);
+  }, [location])
+
+  const isCurrentCategory = (alias: string) => {
+    if (history.location.pathname === API.HOST) {
+      return MAIN_CATEGORY === alias;
+    }
+    return history.location.pathname.includes(alias)
+  }
 
   return (
     <div className={s.Categories}>
       <div className="container">
         <ul className={s.CategoriesUl}>
-          { props.categories && props.categories.map((val) => {
+          { props.categories && props.categories.map((val: any) => {
             const categoryAlias = `${API.HOST}/${CATEGORY}/${val?.alias}`;
             return (
-              <li key={val.id} className={cx(s.LinkWrapper, pathAlias, props.alias === val?.alias ? s.LinkWrapperActive : '')}>
-                <Link className={s.Link} to={categoryAlias}>{val?.name}</Link>
+              <li key={val.id} className={cx(s.LinkWrapper, isCurrentCategory(val?.alias) ? s.LinkWrapperActive : '')}>
+                <Link
+                  className={s.Link}
+                  to={categoryAlias}
+                  onClick={() => setState(val?.alias)}
+                >
+                  {val?.localizations[0].name}
+                </Link>
               </li>
             )
           }) }

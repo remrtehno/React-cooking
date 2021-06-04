@@ -2,7 +2,7 @@ const HOST = process.env.PUBLIC_URL;
 export const CATEGORY = 'category';
 export const ITEM = 'content';
 export const MAIN_CATEGORY = 'salati';
-
+// potok http://advertkey.com/lp/pre/flow/ksua_cook    --- boe
 const API = {
   HOST,
   FOOTER: `${HOST}/text/cook-ua-ks/footer/1`,

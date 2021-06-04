@@ -106,7 +106,9 @@
   max-width: 100%;
   min-width: 97%;
   position: relative;
-
+  @media (max-width: 992px) {
+    font-size: 12px;
+  }
   &::after {
     position: absolute;
     bottom: 0;
@@ -150,6 +152,9 @@
   overflow: hidden;
   margin-right: 20px;
   max-height: 150px;
+  @media (max-width: 992px) {
+    font-size: 12px;
+  }
 }
 
 
@@ -203,6 +208,9 @@
     line-height: 20px;
     padding: 20px;
     margin: 0;
+    @media (max-width: 992px) {
+      font-size: 12px;
+    }
   }
 }
 

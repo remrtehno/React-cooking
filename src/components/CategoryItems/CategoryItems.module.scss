@@ -32,6 +32,9 @@
   font-size: 30px;
   text-transform: uppercase;
   color: var(--second-color);
+  @media (max-width: 992px) {
+    font-size: 25px;
+  }
 }
 
 .BigTile {

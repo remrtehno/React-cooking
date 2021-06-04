@@ -1,11 +1,18 @@
-query ByCategoryID($id: ID!) {
+query ByCategoryID($id: ID!, $lang: [String!]!) {
+    verify
     content(id: $id) {
+        localizations(lang: $lang) {
+            id
+            name
+            description
+            link
+        }
         id
         name
         link
-        metaContentParams {
-            paramName
-            value
+        previews {
+            id
+            link
         }
     }
 }

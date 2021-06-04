@@ -1,6 +1,5 @@
 import React, { FC } from "react";
 import cx from 'classnames';
-import Page from "../Page/Page";
 import Loader from "../Loader/Loader";
 import s from './InnerPage.module.scss';
 
@@ -19,12 +18,12 @@ const InnerPage:FC<InnerPageProps.Props> = (props) => {
   }
 
   return (
-    <Page>
+    <>
       <div className={cx("container", s.InnerPage)}>
         {props.text}
         <div dangerouslySetInnerHTML={{ __html: html }} />
       </div>
-    </Page>
+    </>
   )
 }
 

@@ -13,7 +13,7 @@ declare namespace CategoryItemsProps {
 const CategoryItems: FC<CategoryItemsProps.Props> = ({ content }) => (
   <>
     <div className="container">
-      <h1 className={s.Title}>{content.name}</h1>
+      <h1 className={s.Title}>{content && content.localizations[0].name}</h1>
     </div>
     <div className={s.CategoryItems}>
       {content?.contents && content?.contents?.contents?.map((item: any, index: number) => (
@@ -22,8 +22,8 @@ const CategoryItems: FC<CategoryItemsProps.Props> = ({ content }) => (
           isBig={!index || index === 4}
           img={getImage(item.previews[0].link)}
           link={getLink(item.id, content.alias)}
-          name={item.name}
-          description={item.description}
+          name={item.localizations[0].name}
+          description={item.localizations[0].description}
           type={item.type}
           key={item.id}
         />

@@ -42,6 +42,17 @@ body {
     height: 100%;
     max-width: 1000px;
     margin: 0 auto;
+    position: relative;
+
+}
+
+.inner-pages {
+    font-size: 18px;
+}
+@media (max-width: 992px) {
+    .container {
+        padding: 0 15px;
+    }
 }
 * {
     box-sizing: border-box;

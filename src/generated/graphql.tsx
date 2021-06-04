@@ -31,6 +31,7 @@ export type Category = {
 export type CategoryContentsArgs = {
   first?: Maybe<Scalars['Int']>;
   offset?: Maybe<Scalars['Int']>;
+  paramFilter?: Maybe<Array<ParamFilter>>;
 };
 
 
@@ -75,6 +76,19 @@ export type I18nTag = {
   lang: Scalars['String'];
 };
 
+export type MetaContentParam = {
+  __typename?: 'MetaContentParam';
+  id: Scalars['ID'];
+  localizations?: Maybe<Array<I18nMetaContentParam>>;
+  paramName: Scalars['String'];
+  value: Scalars['String'];
+};
+
+
+export type MetaContentParamLocalizationsArgs = {
+  lang: Array<Scalars['String']>;
+};
+
 export type Content = {
   __typename?: 'Content';
   description?: Maybe<Scalars['String']>;
@@ -111,6 +125,7 @@ export type Query = {
   searchContentByName?: Maybe<ContentEdge>;
   searchContentByTag?: Maybe<ContentEdge>;
   tag?: Maybe<Tag>;
+  verify?: Maybe<Scalars['Boolean']>;
 };
 
 
@@ -128,6 +143,7 @@ export type QuerySearchContentByNameArgs = {
   first?: Maybe<Scalars['Int']>;
   name: Scalars['String'];
   offset?: Maybe<Scalars['Int']>;
+  searchInNameOnly?: Scalars['Boolean'];
 };
 
 
@@ -150,6 +166,7 @@ export type Service = {
   id: Scalars['ID'];
   name: Scalars['String'];
   sskey: Scalars['String'];
+  tags?: Maybe<Array<Tag>>;
 };
 
 export type Tag = {
@@ -166,6 +183,7 @@ export type Tag = {
 export type TagContentsArgs = {
   first?: Maybe<Scalars['Int']>;
   offset?: Maybe<Scalars['Int']>;
+  paramFilter?: Maybe<Array<ParamFilter>>;
 };
 
 
@@ -173,39 +191,43 @@ export type TagLocalizationsArgs = {
   lang: Array<Scalars['String']>;
 };
 
-
-
-export type MetaContentParam = {
-  __typename?: 'MetaContentParam';
-  id: Scalars['ID'];
-  localizations?: Maybe<Array<I18nMetaContentParam>>;
+export type ParamFilter = {
   paramName: Scalars['String'];
   value: Scalars['String'];
 };
 
 
-export type MetaContentParamLocalizationsArgs = {
-  lang: Array<Scalars['String']>;
+
+export type Mutation = {
+  __typename?: 'Mutation';
+  deactivateSubs?: Maybe<Scalars['Boolean']>;
 };
 
 export type ByCategoryIdQueryVariables = Exact<{
   id: Scalars['ID'];
+  lang: Array<Scalars['String']> | Scalars['String'];
 }>;
 
 
 export type ByCategoryIdQuery = (
   { __typename?: 'Query' }
+  & Pick<Query, 'verify'>
   & { content?: Maybe<(
     { __typename?: 'Content' }
     & Pick<Content, 'id' | 'name' | 'link'>
-    & { metaContentParams?: Maybe<Array<(
-      { __typename?: 'MetaContentParam' }
-      & Pick<MetaContentParam, 'paramName' | 'value'>
+    & { localizations?: Maybe<Array<(
+      { __typename?: 'I18nContent' }
+      & Pick<I18nContent, 'id' | 'name' | 'description' | 'link'>
+    )>>, previews?: Maybe<Array<(
+      { __typename?: 'Preview' }
+      & Pick<Preview, 'id' | 'link'>
     )>> }
   )> }
 );
 
-export type CompactQueryVariables = Exact<{ [key: string]: never; }>;
+export type CompactQueryVariables = Exact<{
+  lang: Array<Scalars['String']> | Scalars['String'];
+}>;
 
 
 export type CompactQuery = (
@@ -216,12 +238,18 @@ export type CompactQuery = (
     & { categories?: Maybe<Array<(
       { __typename?: 'Category' }
       & Pick<Category, 'alias' | 'id' | 'name'>
-      & { contents?: Maybe<(
+      & { localizations?: Maybe<Array<(
+        { __typename?: 'I18nCategory' }
+        & Pick<I18nCategory, 'name'>
+      )>>, contents?: Maybe<(
         { __typename?: 'ContentEdge' }
         & { contents?: Maybe<Array<(
           { __typename?: 'Content' }
           & Pick<Content, 'description' | 'id' | 'name'>
-          & { previews?: Maybe<Array<(
+          & { localizations?: Maybe<Array<(
+            { __typename?: 'I18nContent' }
+            & Pick<I18nContent, 'name' | 'id' | 'link' | 'description'>
+          )>>, previews?: Maybe<Array<(
             { __typename?: 'Preview' }
             & Pick<Preview, 'id' | 'link' | 'type'>
           )>> }
@@ -233,14 +261,21 @@ export type CompactQuery = (
 
 
 export const ByCategoryIdDocument = gql`
-    query ByCategoryID($id: ID!) {
+    query ByCategoryID($id: ID!, $lang: [String!]!) {
+  verify
   content(id: $id) {
+    localizations(lang: $lang) {
+      id
+      name
+      description
+      link
+    }
     id
     name
     link
-    metaContentParams {
-      paramName
-      value
+    previews {
+      id
+      link
     }
   }
 }
@@ -259,6 +294,7 @@ export const ByCategoryIdDocument = gql`
  * const { data, loading, error } = useByCategoryIdQuery({
  *   variables: {
  *      id: // value for 'id'
+ *      lang: // value for 'lang'
  *   },
  * });
  */
@@ -274,7 +310,7 @@ export type ByCategoryIdQueryHookResult = ReturnType<typeof useByCategoryIdQuery
 export type ByCategoryIdLazyQueryHookResult = ReturnType<typeof useByCategoryIdLazyQuery>;
 export type ByCategoryIdQueryResult = Apollo.QueryResult<ByCategoryIdQuery, ByCategoryIdQueryVariables>;
 export const CompactDocument = gql`
-    query compact {
+    query compact($lang: [String!]!) {
   compact {
     flowURL
     name
@@ -283,8 +319,17 @@ export const CompactDocument = gql`
       alias
       id
       name
+      localizations(lang: $lang) {
+        name
+      }
       contents {
         contents {
+          localizations(lang: $lang) {
+            name
+            id
+            link
+            description
+          }
           previews {
             id
             link
@@ -315,10 +360,11 @@ export const CompactDocument = gql`
  * @example
  * const { data, loading, error } = useCompactQuery({
  *   variables: {
+ *      lang: // value for 'lang'
  *   },
  * });
  */
-export function useCompactQuery(baseOptions?: Apollo.QueryHookOptions<CompactQuery, CompactQueryVariables>) {
+export function useCompactQuery(baseOptions: Apollo.QueryHookOptions<CompactQuery, CompactQueryVariables>) {
         const options = {...defaultOptions, ...baseOptions}
         return Apollo.useQuery<CompactQuery, CompactQueryVariables>(CompactDocument, options);
       }

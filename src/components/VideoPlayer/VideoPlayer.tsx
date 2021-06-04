@@ -9,12 +9,10 @@ export declare namespace VideoPlayerProps {
   };
 }
 
-const VideoPlayer: FC<VideoPlayerProps.Props> = (props) => {
-  return (
-    <div className={cx(s.VideoPlayer)}>
-      <video className={s.VideoPlayerTag} controls src={props.src} poster={props.poster} />
-    </div>
-  )
-}
+const VideoPlayer: FC<VideoPlayerProps.Props> = (props) => (
+  <div className={cx(s.VideoPlayer)}>
+    <video className={s.VideoPlayerTag} controls src={props.src} poster={props.poster} />
+  </div>
+)
 
 export default VideoPlayer;

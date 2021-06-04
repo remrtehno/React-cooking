@@ -1,5 +1,3 @@
-const isMobile = () => {
-  return window.innerWidth < 992;
-}
+const isMobile = () => window.innerWidth < 992
 
 export default isMobile;
