@@ -4,4 +4,4 @@
 # - SERVER: hostname of the server where project will be builded;
 # Server must be added in girar, in specified `build' location.
 # To see server list use girar command "servers".
-vps6046.mtu.immo
+vps6121.mtu.immo
