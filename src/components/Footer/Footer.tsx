@@ -21,7 +21,7 @@ const Footer:FC = () => {
           </li>
           <li className="mini-nav__item">
             <Link to={ROUTE_PATHS.OFERTA} className="mini-nav__link">
-              Користувача угода
+              Угода користувача
             </Link>
           </li>
         </ul>

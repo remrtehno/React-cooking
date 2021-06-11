@@ -11,7 +11,7 @@ export declare namespace VideoPlayerProps {
 
 const VideoPlayer: FC<VideoPlayerProps.Props> = (props) => (
   <div className={cx(s.VideoPlayer)}>
-    <video className={s.VideoPlayerTag} controls src={props.src} poster={props.poster} />
+    <video autoPlay className={s.VideoPlayerTag} controls src={props.src} poster={props.poster} />
   </div>
 )
 
