@@ -31,14 +31,14 @@ const Header = () => {
           <div className={s.HeaderWrapper}>
             <div className="logo">
               <button type="button" className={s.logoLink} onClick={redirectToRoot}>
-                <img className={s.logoImage} src={logo} alt="Кулинария - Top" />
+                <img className={s.logoImage} src={logo} alt="Кулінарія - Top" />
               </button>
             </div>
           </div>
           <div className={s.HeaderWrapper}>
             <button type="button" className={s.logoLink} onClick={redirectToRoot}>
               <div className={s.projectName}>
-                Кулинария
+                Кулінарія
               </div>
             </button>
           </div>
