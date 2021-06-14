@@ -17,11 +17,11 @@ const Header = () => {
     },
   });
 
-  if (loading || !data?.compact) {
+  if (loading || !data?.point?.service) {
     return <Loader />;
   }
 
-  const { categories } = data?.compact;
+  const { categories } = data?.point?.service;
   const redirectToRoot = () => history && history.push(API.HOST);
 
   return (

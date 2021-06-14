@@ -17,11 +17,11 @@ const CategoryPage:FC<CategoryProps.Props> = (props) => {
     },
   });
 
-  if (loading || !data?.compact) {
+  if (loading || !data?.point?.service) {
     return <Loader />;
   }
 
-  const { categories } = data?.compact;
+  const { categories } = data?.point?.service;
   const { alias } = props.match.params;
 
   return <CategoryItems content={categories?.find((item) => item.alias === alias)} />;

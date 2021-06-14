@@ -7,10 +7,14 @@ import Footer from "../Footer/Footer";
 declare namespace PageProps {
   export type Props = {
     className?: string,
+    hideCategories?: boolean,
+    hidefooter?: boolean,
   }
 }
 
-const Page:FC<PageProps.Props> = ({ children, className }) => (
+const Page:FC<PageProps.Props> = ({
+  children,
+}) => (
   <div className={cx(s.Page)}>
     <Header />
     {children}

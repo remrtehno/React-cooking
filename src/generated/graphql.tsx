@@ -12,8 +12,6 @@ export type Scalars = {
   Boolean: boolean;
   Int: number;
   Float: number;
-  JSON: any;
-  UUID: any;
 };
 
 export type Category = {
@@ -29,13 +27,33 @@ export type Category = {
 
 
 export type CategoryContentsArgs = {
-  first?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
+  limit?: Scalars['Int'];
+  offset?: Scalars['Int'];
   paramFilter?: Maybe<Array<ParamFilter>>;
 };
 
 
 export type CategoryLocalizationsArgs = {
+  lang: Array<Scalars['String']>;
+};
+
+export type Content = {
+  __typename?: 'Content';
+  description?: Maybe<Scalars['String']>;
+  id: Scalars['ID'];
+  link: Scalars['String'];
+  localizations?: Maybe<Array<I18nContent>>;
+  metaContentParams?: Maybe<Array<MetaContentParam>>;
+  name: Scalars['String'];
+  previews?: Maybe<Array<Preview>>;
+  priority: Scalars['Int'];
+  protected: Scalars['Boolean'];
+  tags?: Maybe<Array<Tag>>;
+  type: Scalars['String'];
+};
+
+
+export type ContentLocalizationsArgs = {
   lang: Array<Scalars['String']>;
 };
 
@@ -76,11 +94,11 @@ export type I18nTag = {
   lang: Scalars['String'];
 };
 
-export type MetaContentParam = {
+export type MetaContentParam = Param & {
   __typename?: 'MetaContentParam';
   id: Scalars['ID'];
   localizations?: Maybe<Array<I18nMetaContentParam>>;
-  paramName: Scalars['String'];
+  name: Scalars['String'];
   value: Scalars['String'];
 };
 
@@ -89,24 +107,30 @@ export type MetaContentParamLocalizationsArgs = {
   lang: Array<Scalars['String']>;
 };
 
-export type Content = {
-  __typename?: 'Content';
-  description?: Maybe<Scalars['String']>;
-  id: Scalars['ID'];
-  link: Scalars['String'];
-  localizations?: Maybe<Array<I18nContent>>;
-  metaContentParams?: Maybe<Array<MetaContentParam>>;
-  name: Scalars['String'];
-  previews?: Maybe<Array<Preview>>;
-  priority: Scalars['Int'];
-  protected: Scalars['Boolean'];
-  tags?: Maybe<Array<Tag>>;
-  type: Scalars['String'];
+export type Mutation = {
+  __typename?: 'Mutation';
+  deactivateSubs?: Maybe<Scalars['Boolean']>;
 };
 
+export type Param = {
+  id: Scalars['ID'];
+  name: Scalars['String'];
+  /** Base64 encoded JSON object */
+  value: Scalars['String'];
+};
 
-export type ContentLocalizationsArgs = {
-  lang: Array<Scalars['String']>;
+export type ParamFilter = {
+  paramName: Scalars['String'];
+  value: Scalars['String'];
+};
+
+export type Point = {
+  __typename?: 'Point';
+  flowURL?: Maybe<Scalars['String']>;
+  id: Scalars['ID'];
+  service: Service;
+  sskey: Scalars['String'];
+  verify?: Maybe<Scalars['Boolean']>;
 };
 
 export type Preview = {
@@ -119,54 +143,50 @@ export type Preview = {
 
 export type Query = {
   __typename?: 'Query';
-  category?: Maybe<Category>;
-  compact?: Maybe<Service>;
-  content?: Maybe<Content>;
-  searchContentByName?: Maybe<ContentEdge>;
-  searchContentByTag?: Maybe<ContentEdge>;
-  tag?: Maybe<Tag>;
-  verify?: Maybe<Scalars['Boolean']>;
-};
-
-
-export type QueryCategoryArgs = {
-  id: Scalars['ID'];
-};
-
-
-export type QueryContentArgs = {
-  id: Scalars['ID'];
-};
-
-
-export type QuerySearchContentByNameArgs = {
-  first?: Maybe<Scalars['Int']>;
-  name: Scalars['String'];
-  offset?: Maybe<Scalars['Int']>;
-  searchInNameOnly?: Scalars['Boolean'];
-};
-
-
-export type QuerySearchContentByTagArgs = {
-  first?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  tagName: Scalars['String'];
-};
-
-
-export type QueryTagArgs = {
-  id: Scalars['ID'];
+  point?: Maybe<Point>;
 };
 
 export type Service = {
   __typename?: 'Service';
   alias: Scalars['String'];
   categories?: Maybe<Array<Category>>;
-  flowURL?: Maybe<Scalars['String']>;
+  category?: Maybe<Category>;
+  content?: Maybe<Content>;
+  contents?: Maybe<ContentEdge>;
   id: Scalars['ID'];
   name: Scalars['String'];
-  sskey: Scalars['String'];
+  search?: Maybe<ContentEdge>;
+  tag?: Maybe<Tag>;
   tags?: Maybe<Array<Tag>>;
+};
+
+
+export type ServiceCategoryArgs = {
+  id: Scalars['ID'];
+};
+
+
+export type ServiceContentArgs = {
+  id: Scalars['ID'];
+};
+
+
+export type ServiceContentsArgs = {
+  limit?: Scalars['Int'];
+  offset?: Scalars['Int'];
+};
+
+
+export type ServiceSearchArgs = {
+  limit?: Scalars['Int'];
+  name: Scalars['String'];
+  offset?: Scalars['Int'];
+  searchInNameOnly?: Scalars['Boolean'];
+};
+
+
+export type ServiceTagArgs = {
+  id: Scalars['ID'];
 };
 
 export type Tag = {
@@ -181,26 +201,14 @@ export type Tag = {
 
 
 export type TagContentsArgs = {
-  first?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
+  limit?: Scalars['Int'];
+  offset?: Scalars['Int'];
   paramFilter?: Maybe<Array<ParamFilter>>;
 };
 
 
 export type TagLocalizationsArgs = {
   lang: Array<Scalars['String']>;
-};
-
-export type ParamFilter = {
-  paramName: Scalars['String'];
-  value: Scalars['String'];
-};
-
-
-
-export type Mutation = {
-  __typename?: 'Mutation';
-  deactivateSubs?: Maybe<Scalars['Boolean']>;
 };
 
 export type ByCategoryIdQueryVariables = Exact<{
@@ -211,17 +219,23 @@ export type ByCategoryIdQueryVariables = Exact<{
 
 export type ByCategoryIdQuery = (
   { __typename?: 'Query' }
-  & Pick<Query, 'verify'>
-  & { content?: Maybe<(
-    { __typename?: 'Content' }
-    & Pick<Content, 'id' | 'name' | 'link'>
-    & { localizations?: Maybe<Array<(
-      { __typename?: 'I18nContent' }
-      & Pick<I18nContent, 'id' | 'name' | 'description' | 'link'>
-    )>>, previews?: Maybe<Array<(
-      { __typename?: 'Preview' }
-      & Pick<Preview, 'id' | 'link'>
-    )>> }
+  & { point?: Maybe<(
+    { __typename?: 'Point' }
+    & Pick<Point, 'verify'>
+    & { service: (
+      { __typename?: 'Service' }
+      & { content?: Maybe<(
+        { __typename?: 'Content' }
+        & Pick<Content, 'id' | 'name' | 'link'>
+        & { localizations?: Maybe<Array<(
+          { __typename?: 'I18nContent' }
+          & Pick<I18nContent, 'id' | 'name' | 'description' | 'link'>
+        )>>, previews?: Maybe<Array<(
+          { __typename?: 'Preview' }
+          & Pick<Preview, 'id' | 'link'>
+        )>> }
+      )> }
+    ) }
   )> }
 );
 
@@ -232,50 +246,57 @@ export type CompactQueryVariables = Exact<{
 
 export type CompactQuery = (
   { __typename?: 'Query' }
-  & { compact?: Maybe<(
-    { __typename?: 'Service' }
-    & Pick<Service, 'flowURL' | 'name' | 'id'>
-    & { categories?: Maybe<Array<(
-      { __typename?: 'Category' }
-      & Pick<Category, 'alias' | 'id' | 'name'>
-      & { localizations?: Maybe<Array<(
-        { __typename?: 'I18nCategory' }
-        & Pick<I18nCategory, 'name'>
-      )>>, contents?: Maybe<(
-        { __typename?: 'ContentEdge' }
-        & { contents?: Maybe<Array<(
-          { __typename?: 'Content' }
-          & Pick<Content, 'description' | 'id' | 'name'>
-          & { localizations?: Maybe<Array<(
-            { __typename?: 'I18nContent' }
-            & Pick<I18nContent, 'name' | 'id' | 'link' | 'description'>
-          )>>, previews?: Maybe<Array<(
-            { __typename?: 'Preview' }
-            & Pick<Preview, 'id' | 'link' | 'type'>
+  & { point?: Maybe<(
+    { __typename?: 'Point' }
+    & Pick<Point, 'flowURL' | 'id'>
+    & { service: (
+      { __typename?: 'Service' }
+      & { categories?: Maybe<Array<(
+        { __typename?: 'Category' }
+        & Pick<Category, 'alias' | 'id' | 'name'>
+        & { localizations?: Maybe<Array<(
+          { __typename?: 'I18nCategory' }
+          & Pick<I18nCategory, 'name'>
+        )>>, contents?: Maybe<(
+          { __typename?: 'ContentEdge' }
+          & { contents?: Maybe<Array<(
+            { __typename?: 'Content' }
+            & Pick<Content, 'description' | 'id' | 'name'>
+            & { localizations?: Maybe<Array<(
+              { __typename?: 'I18nContent' }
+              & Pick<I18nContent, 'name' | 'id' | 'link' | 'description'>
+            )>>, previews?: Maybe<Array<(
+              { __typename?: 'Preview' }
+              & Pick<Preview, 'id' | 'link' | 'type'>
+            )>> }
           )>> }
-        )>> }
-      )> }
-    )>> }
+        )> }
+      )>> }
+    ) }
   )> }
 );
 
 
 export const ByCategoryIdDocument = gql`
     query ByCategoryID($id: ID!, $lang: [String!]!) {
-  verify
-  content(id: $id) {
-    localizations(lang: $lang) {
-      id
-      name
-      description
-      link
-    }
-    id
-    name
-    link
-    previews {
-      id
-      link
+  point {
+    verify
+    service {
+      content(id: $id) {
+        localizations(lang: $lang) {
+          id
+          name
+          description
+          link
+        }
+        id
+        name
+        link
+        previews {
+          id
+          link
+        }
+      }
     }
   }
 }
@@ -311,35 +332,36 @@ export type ByCategoryIdLazyQueryHookResult = ReturnType<typeof useByCategoryIdL
 export type ByCategoryIdQueryResult = Apollo.QueryResult<ByCategoryIdQuery, ByCategoryIdQueryVariables>;
 export const CompactDocument = gql`
     query compact($lang: [String!]!) {
-  compact {
+  point {
     flowURL
-    name
     id
-    categories {
-      alias
-      id
-      name
-      localizations(lang: $lang) {
+    service {
+      categories {
+        alias
+        id
         name
-      }
-      contents {
-        contents {
-          localizations(lang: $lang) {
-            name
-            id
-            link
-            description
-          }
-          previews {
-            id
-            link
-            type
-          }
-          description
-          id
+        localizations(lang: $lang) {
           name
-          previews {
-            link
+        }
+        contents {
+          contents {
+            localizations(lang: $lang) {
+              name
+              id
+              link
+              description
+            }
+            previews {
+              id
+              link
+              type
+            }
+            description
+            id
+            name
+            previews {
+              link
+            }
           }
         }
       }

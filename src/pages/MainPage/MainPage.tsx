@@ -11,11 +11,11 @@ function MainPage() {
     },
   });
 
-  if (loading || !data?.compact) {
+  if (loading || !data?.point?.service) {
     return <Loader />;
   }
 
-  const { categories } = data?.compact;
+  const { categories } = data?.point?.service;
 
   return (
     <CategoryItems content={categories?.find((item) => item.alias === MAIN_CATEGORY)} />

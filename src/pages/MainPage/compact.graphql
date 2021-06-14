@@ -1,33 +1,34 @@
 query compact($lang: [String!]!) {
-    compact {
+    point {
         flowURL
-        name
         id
-        categories {
-            alias
-            id
-            name
-            localizations(lang: $lang) {
+        service {
+            categories {
+                alias
+                id
                 name
-            }
-            contents {
-                contents {
-                    localizations(lang: $lang) {
-                        name
-                        id
-                        link
-                        description
-                    }
-                    previews {
-                        id
-                        link
-                        type
-                    }
-                    description
-                    id
+                localizations(lang: $lang) {
                     name
-                    previews {
-                        link
+                }
+                contents {
+                    contents {
+                        localizations(lang: $lang) {
+                            name
+                            id
+                            link
+                            description
+                        }
+                        previews {
+                            id
+                            link
+                            type
+                        }
+                        description
+                        id
+                        name
+                        previews {
+                            link
+                        }
                     }
                 }
             }

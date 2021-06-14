@@ -5,9 +5,16 @@ schema {
     mutation: Mutation
 }
 
+interface Param {
+    id: ID!
+    name: String!
+    "Base64 encoded JSON object"
+    value: String!
+}
+
 type Category {
     alias: String!
-    contents(first: Int, offset: Int, paramFilter: [ParamFilter!]): ContentEdge
+    contents(limit: Int! = 10, offset: Int! = 0, paramFilter: [ParamFilter!]): ContentEdge
     id: ID!
     localizations(lang: [String!]!): [I18nCategory!]
     name: String!
@@ -61,15 +68,23 @@ type I18nTag {
     lang: String!
 }
 
-type MetaContentParam {
+type MetaContentParam implements Param {
     id: ID!
     localizations(lang: [String!]!): [I18nMetaContentParam!]
-    paramName: String!
+    name: String!
     value: String!
 }
 
 type Mutation {
     deactivateSubs: Boolean
+}
+
+type Point {
+    flowURL: String
+    id: ID!
+    service: Service!
+    sskey: String!
+    verify: Boolean
 }
 
 type Preview {
@@ -80,27 +95,24 @@ type Preview {
 }
 
 type Query {
-    category(id: ID!): Category
-    compact: Service
-    content(id: ID!): Content
-    searchContentByName(first: Int, name: String!, offset: Int, searchInNameOnly: Boolean! = false): ContentEdge
-    searchContentByTag(first: Int, offset: Int, tagName: String!): ContentEdge
-    tag(id: ID!): Tag
-    verify: Boolean
+    point: Point
 }
 
 type Service {
     alias: String!
     categories: [Category!]
-    flowURL: String
+    category(id: ID!): Category
+    content(id: ID!): Content
+    contents(limit: Int! = 10, offset: Int! = 0): ContentEdge
     id: ID!
     name: String!
-    sskey: String!
+    search(limit: Int! = 10, name: String!, offset: Int! = 0, searchInNameOnly: Boolean! = false): ContentEdge
+    tag(id: ID!): Tag
     tags: [Tag!]
 }
 
 type Tag {
-    contents(first: Int, offset: Int, paramFilter: [ParamFilter!]): ContentEdge
+    contents(limit: Int! = 10, offset: Int! = 0, paramFilter: [ParamFilter!]): ContentEdge
     displayName: String!
     id: ID!
     localizations(lang: [String!]!): [I18nTag!]
@@ -112,8 +124,3 @@ input ParamFilter {
     paramName: String!
     value: String!
 }
-
-
-scalar JSON
-
-scalar UUID

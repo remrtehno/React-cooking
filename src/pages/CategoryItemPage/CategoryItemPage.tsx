@@ -37,11 +37,12 @@ const CategoryItemPage:FC<CategoryItemPageProps.Props> = (props) => {
     return <Loader />;
   }
 
-  if (!data?.verify) {
-    window.location.href = compact.data?.compact?.flowURL || '';
+  if (!data?.point?.verify) {
+    window.location.href = compact.data?.point?.flowURL || '';
   }
 
-  const currentCategory = compact.data?.compact?.categories?.find((item) => item.alias === alias)
+  // eslint-disable-next-line max-len
+  const currentCategory = compact.data?.point?.service.categories?.find((item) => item.alias === alias)
   const currentCategoryContents = currentCategory?.contents?.contents;
 
   return (
@@ -51,13 +52,14 @@ const CategoryItemPage:FC<CategoryItemPageProps.Props> = (props) => {
           <Back />
           <div className={s.CategoryItemVideoTitle}>
             {
-              data?.content?.localizations?.length && data?.content?.localizations[0]?.name
+              data?.point?.service.content?.localizations?.length
+              && data?.point?.service.content?.localizations[0]?.name
             }
           </div>
           <VideoPlayer src={`${API.CONTENT}${
-            data.content?.localizations?.length
-              ? data.content?.localizations[0].link
-              : data.content?.link
+            data?.point?.service.content?.localizations?.length
+              ? data?.point?.service.content?.localizations[0].link
+              : data?.point?.service.content?.link
           }`}
           />
         </div>

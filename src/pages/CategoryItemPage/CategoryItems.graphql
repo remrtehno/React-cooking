@@ -1,18 +1,22 @@
 query ByCategoryID($id: ID!, $lang: [String!]!) {
-    verify
-    content(id: $id) {
-        localizations(lang: $lang) {
-            id
-            name
-            description
-            link
-        }
-        id
-        name
-        link
-        previews {
-            id
-            link
+    point {
+        verify
+        service {
+            content(id: $id) {
+                localizations(lang: $lang) {
+                    id
+                    name
+                    description
+                    link
+                }
+                id
+                name
+                link
+                previews {
+                    id
+                    link
+                }
+            }
         }
     }
 }
