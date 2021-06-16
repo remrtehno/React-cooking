@@ -7,6 +7,8 @@ import Footer from "../Footer/Footer";
 declare namespace PageProps {
   export type Props = {
     className?: string,
+    hideCategories?: boolean,
+    hidefooter?: boolean,
   }
 }
 

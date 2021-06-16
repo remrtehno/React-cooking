@@ -4,7 +4,7 @@ import {
 } from 'react-router-dom';
 import cx from 'classnames';
 import s from './Categories.module.scss';
-import API, { CATEGORY, MAIN_CATEGORY } from '../../constants/constants';
+import API, { CATEGORY, MAIN_CATEGORY, ROUTE_PATHS } from '../../constants/constants';
 
 declare namespace CategoriesProps {
     type Props = {
@@ -27,6 +27,10 @@ const Categories:FC<CategoriesProps.Props> = (props) => {
       return MAIN_CATEGORY === alias;
     }
     return history.location.pathname.includes(alias)
+  }
+
+  if (location.pathname === ROUTE_PATHS.WELCOME) {
+    return null;
   }
 
   return (

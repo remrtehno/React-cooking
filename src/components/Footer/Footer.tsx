@@ -1,8 +1,8 @@
 import React, {
-  FC,
+  FC, useEffect, useState,
 } from 'react';
 import {
-  Link,
+  Link, useLocation,
 } from 'react-router-dom';
 import { useSelector } from "react-redux";
 import s from './Footer.module.scss';
@@ -11,6 +11,16 @@ import { RootState } from "../../store/store";
 
 const Footer:FC = () => {
   const footerText = useSelector((state:RootState) => state.footerText);
+  const [, setState] = useState(0);
+  const location = useLocation();
+
+  useEffect(() => {
+    setState(1);
+  }, [location])
+
+  if (location.pathname === ROUTE_PATHS.WELCOME) {
+    return null;
+  }
 
   return (
     <footer className={s.Footer}>
