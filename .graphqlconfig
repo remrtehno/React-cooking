@@ -4,7 +4,7 @@
   "extensions": {
     "endpoints": {
       "Default GraphQL Endpoint": {
-        "url": "http://localhost:3000/cook/api/query",
+        "url": "http://vps8067.mtu.immo:6427/query",
         "headers": {
           "user-agent": "JS GraphQL"
         },
