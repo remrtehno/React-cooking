@@ -12,7 +12,6 @@ const API = {
   CATEGORIES: `${HOST}/api/compact-auto?lang=ua`,
   FREE_PREVIEW: `${HOST}/gate/f/`,
   CONTENT: `${HOST}/gate/p/`,
-  BACK_URL: 'http://smotri.club/ero/default/landing/lp/flow/ksua_naf/?source=service',
 };
 
 export const ROUTE_PATHS = {
