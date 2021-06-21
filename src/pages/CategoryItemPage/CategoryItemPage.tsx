@@ -64,7 +64,8 @@ const CategoryItemPage:FC<CategoryItemPageProps.Props> = (props) => {
         <div className={s.CategoryItemSidebar}>
           <div className={s.CategoryItemSidebarScrolled}>
             <div className={s.CategoryItemSidebarWrapper}>
-              {randomFromArray(currentCategoryContents, 5).map((item, index) => (
+              {/* eslint-disable-next-line max-len */}
+              {randomFromArray(currentCategoryContents, 5).map((item, index) => item.localizations && (
                 <Tile
                   isBig={!index}
                   key={item.id}
