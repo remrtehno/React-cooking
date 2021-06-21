@@ -16,7 +16,8 @@ const CategoryItems: FC<CategoryItemsProps.Props> = ({ content }) => (
       <h1 className={s.Title}>{content && content.localizations[0].name}</h1>
     </div>
     <div className={s.CategoryItems}>
-      {content?.contents && content?.contents?.contents?.map((item: any, index: number) => (
+      {/* eslint-disable-next-line max-len */}
+      {content?.contents && content?.contents?.contents?.map((item: any, index: number) => item.localizations && (
         <Tile
           className={cx(index === 0 ? s.BigTile : '', index === 4 ? s.BigTileRow : '')}
           isBig={!index || index === 4}
